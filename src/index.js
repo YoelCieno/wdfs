@@ -27,24 +27,24 @@ class WdfsCommand extends Command {
       return this.log('|__      ', 'index.html')
     })
 
-    // create app directory at root
-    mkdir(`${path}/app`, (appdirioerror, _dirfdo) => {
-      if (appdirioerror) {
-        return this.error(appdirioerror)
+    // create src directory at root
+    mkdir(`${path}/src`, (srcdirioerror, _dirfdo) => {
+      if (srcdirioerror) {
+        return this.error(srcdirioerror)
       }
 
-      // create js directory in the app directory
-      mkdir(`${path}/app/js`, (jsdirioerror, _dirfdi) => {
+      // create js directory in the src directory
+      mkdir(`${path}/src/js`, (jsdirioerror, _dirfdi) => {
         if (jsdirioerror) {
           return this.error(jsdirioerror)
         }
 
-        open(`${path}/app/js/script.js`, 'w', (jsfileioerror, _fd) => {
+        open(`${path}/src/js/script.js`, 'w', (jsfileioerror, _fd) => {
           if (jsfileioerror) {
             return this.error(jsfileioerror)
           }
           // write boilerplate js
-          writeFile(`${path}/app/js/script.js`, js, e => {
+          writeFile(`${path}/src/js/script.js`, js, e => {
             if (e) {
               return this.error(e)
             }
@@ -54,24 +54,24 @@ class WdfsCommand extends Command {
               return this.error(e)
             }
           })
-          return this.log('|______  ', 'app/js/script.js')
+          return this.log('|______  ', 'src/js/script.js')
         })
-        return this.log('|____    ', 'app/js')
+        return this.log('|____    ', 'src/js')
       })
 
-      // create scss directory in the app directory
-      mkdir(`${path}/app/scss`, (cssdirioerror, _dirfdo) => {
+      // create scss directory in the src directory
+      mkdir(`${path}/src/scss`, (cssdirioerror, _dirfdo) => {
         if (cssdirioerror) {
           return this.error(cssdirioerror)
         }
 
         // create style.scss file in scss directory
-        open(`${path}/app/scss/style.scss`, 'w', (cssfileioerror, _fd) => {
+        open(`${path}/src/scss/style.scss`, 'w', (cssfileioerror, _fd) => {
           if (cssfileioerror) {
             return this.error(cssfileioerror)
           }
           // write boilerplate style
-          writeFile(`${path}/app/scss/style.scss`, '@import "global";', e => {
+          writeFile(`${path}/src/scss/style.scss`, '@import "global";', e => {
             if (e) {
               return this.error(e)
             }
@@ -81,16 +81,16 @@ class WdfsCommand extends Command {
               return this.error(e)
             }
           })
-          return this.log('|______  ', 'app/scss/style.scss')
+          return this.log('|______  ', 'src/scss/style.scss')
         })
 
         // create _global.scss parcel in scss directory
-        open(`${path}/app/scss/_global.scss`, 'w', (cssfileioerror, _fd) => {
+        open(`${path}/src/scss/_global.scss`, 'w', (cssfileioerror, _fd) => {
           if (cssfileioerror) {
             return this.error(cssfileioerror)
           }
           // write boilerplate global style
-          writeFile(`${path}/app/scss/_global.scss`, css, e => {
+          writeFile(`${path}/src/scss/_global.scss`, css, e => {
             if (e) {
               return this.error(e)
             }
@@ -100,11 +100,11 @@ class WdfsCommand extends Command {
               return this.error(e)
             }
           })
-          return this.log('|______  ', 'app/scss/_global.scss')
+          return this.log('|______  ', 'src/scss/_global.scss')
         })
-        return this.log('|____    ', 'app/scss')
+        return this.log('|____    ', 'src/scss')
       })
-      return this.log('|__      ', 'app')
+      return this.log('|__      ', 'src')
     })
   }
 }
